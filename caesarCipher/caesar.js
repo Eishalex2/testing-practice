@@ -7,12 +7,15 @@ function caesarCipher(string, shift) {
   });
 
   const backToString = convertedAndShifted.map(num => {
+    // capital A-Z is between 65 and 90, inclusive
     if (num - shift >= 65 && num - shift <= 90) {
       if (num > 90) return String.fromCharCode(num - 26);
       return String.fromCharCode(num);
+    // lowercase a-z is between 97 and 122, inclusive
     } else if (num - shift >= 97 && num - shift <= 122) {
       if (num > 122) return String.fromCharCode(num - 26);
       return String.fromCharCode(num);
+    // handle punctuation
     } else return num;
   });  
   return backToString.join('');
